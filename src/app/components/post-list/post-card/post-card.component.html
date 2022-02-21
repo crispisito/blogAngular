@@ -1,0 +1,11 @@
+<a [routerLink]="['/post/', post?.id]" class="text-secondary text-decoration-none card-hover">
+    <div class="card-img-top rounded-0 d-flex align-items-center justify-content-center overflow-hidden card-image">
+        <img [src]="post?.image" class="position-absolute w-100" [alt]="post?.title">
+    </div>
+    <div class="card-body">
+        <p class="card-text mb-1"><small>{{post?.category}}</small></p>
+        <h5 class="card-title">{{post?.title}}</h5>
+        <p class="card-text">{{post?.text | textoCorto:66:'...'}}</p>
+        <p class="card-text"><small>{{post?.date | date: 'M-d-yyyy'}}</small></p>
+    </div>
+</a>

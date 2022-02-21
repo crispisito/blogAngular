@@ -1,0 +1,39 @@
+.card-image {
+    position: relative;
+    height: 170px;
+}
+
+.card-hover .card-body{
+    transition: .3s;
+}
+
+.card-hover:hover .card-body {
+    background-color: #8eaebd3b;
+    color: white;
+}
+
+.card-body .card-title,
+.card-body .card-text {
+    color: #031424;
+}
+
+.card-hover .card-image img {
+    transition: .3s;
+}
+
+.card-hover:hover .card-image img {
+    filter: saturate(0.5);
+}
+
+
+@media (min-width: 1200px) {
+    .card-image {
+        height: 200px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .card-image {
+        height: 240px;
+    }
+}

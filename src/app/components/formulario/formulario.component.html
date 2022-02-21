@@ -1,0 +1,55 @@
+<section class="container mb-4">
+    <h1>Crea un nuevo post</h1>
+
+    <div class="alert alert-danger alert-dismissible fade show" role="alert"  *ngIf="validate">
+        <strong>Ojo!</strong> te falta completar alguno de los campos
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="changeView()"></button>
+    </div>
+
+    <form novalidate [formGroup]="newPostForm" (ngSubmit)="getDataForm()">
+
+        <div class="mb-3 form-group">
+            <label for="title" class="mb-1">Título post <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="title" formControlName="title">
+
+            <p class="text-danger" *ngIf="checkControl('title', 'required')">El campo es obligatorio.</p>
+        </div>
+
+        <div class="mb-3 form-group">
+            <label for="text" class="mb-1">Texto <span class="text-danger">*</span></label>
+            <textarea class="form-control" id="text" formControlName="text"></textarea>
+
+            <p class="text-danger" *ngIf="checkControl('text', 'required')">El campo es obligatorio.</p>
+        </div>
+
+        <div class="mb-3 form-group">
+            <label for="image" class="mb-1">Url de la imagen <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="image" formControlName="image">
+
+            <p class="text-danger" *ngIf="checkControl('image', 'required')">El campo es obligatorio.</p>
+            <p class="text-danger" *ngIf="checkControl('image', 'pattern')">La Url no tiene un formato válido.</p>
+        </div>
+
+        <div class="mb-3 form-group">
+            <label for="category" class="mb-1">Categoría <span class="text-danger">*</span></label>
+            <select name="category" class="form-select" id="category" formControlName="category">
+                <option value="" disabled selected>Selecciona una categoría</option>
+                <option [value]="category.title" *ngFor="let category of arrCategories">{{category.title}}</option>
+            </select>
+
+            <p class="text-danger" *ngIf="checkControl('category', 'required')">Debes seleccionar una categoría.</p>
+        </div>
+
+        <div class="mb-3 form-group">
+            <label for="date" class="mb-1">Fecha <span class="text-danger">*</span></label>
+            <input type="date" class="form-control" id="date" formControlName="date">
+
+            <p class="text-danger" *ngIf="checkControl('date', 'required')">El campo es obligatorio.</p>
+        </div>
+
+        <p><small>Todos los campos con asterísco(<span class="text-danger">*</span>) son obligatorios</small></p>
+
+        <input type="submit" class="btn btn-danger" value="Guardar">
+
+    </form>
+</section>
